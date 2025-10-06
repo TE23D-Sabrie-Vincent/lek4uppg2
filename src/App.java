@@ -32,7 +32,7 @@ public class App {
 
             else if (val == 1) {
                 if (antalRegistrerade >=100) {
-                    System.out.println("Max antal elever (100) har redan registrerats!");
+                    System.out.println("Max antal elever (100) har redan registrerats!"); // Ifall att någon har faktiskt fixat flera än 100 elever
                     continue;
                 }
                 System.out.println("\nRegistrerar en elev");
