@@ -1,11 +1,14 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Elev> elever = new ArrayList<>();
+        // ArrayList<Elev> elever = new ArrayList<>();
         boolean loop = true;
+
+        Elev[] elever = new Elev[100];
+        int antalRegistrerade = 0;
 
         while (loop) {
             System.out.println("\n Meny:");
@@ -27,7 +30,11 @@ public class App {
                 loop = false;
             }
 
-            if (val == 1) {
+            else if (val == 1) {
+                if (antalRegistrerade >=100) {
+                    System.out.println("Max antal elever (100) har redan registrerats!");
+                    continue;
+                }
                 System.out.println("\nRegistrerar en elev");
 
                 System.out.print("Ditt namn: ");
@@ -36,11 +43,6 @@ public class App {
                 String personNum = scanner.nextLine();
                 System.out.print("Ditt personnummer: ");
 
-                // if (personNum.length() != 8) {
-                // System.out.println("Ogiltigt personnummer, det ska finnas 8 nummer
-                // (ÅÅÅÅMMDD)");
-                // continue;
-                // }
                 String mail = scanner.nextLine();
                 System.out.print("Din mail: ");
 
@@ -53,17 +55,17 @@ public class App {
                 String program = scanner.nextLine();
                 System.out.print("Ditt program: ");
 
-                Elev nyElev = new Elev(namn, personNum, mail, mobilNum, klass, program);
-                elever.add(nyElev);
+                elever[antalRegistrerade] = new Elev(namn, personNum, mail, mobilNum, klass, program);
+                antalRegistrerade++;
 
                 System.out.println("Eleven är registrerad");
             } else if (val == 2) {
-                if (elever.isEmpty()) {
+                if (antalRegistrerade == 0) {
                     System.out.println("Det finns inga elever registrerade lmao :P");
                 } else {
                     System.out.println("\n Alla eleverna:");
-                    for (Elev e : elever) {
-                        e.skrivUtInfo();
+                    for (int i = 0; i < antalRegistrerade; i++) {
+                        elever[i].skrivUtInfo();
                     }
                 }
             } else {

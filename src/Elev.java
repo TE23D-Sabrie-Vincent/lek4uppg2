@@ -6,6 +6,8 @@ public class Elev {
     String klass;
     String program;
 
+    static int antalElever = 0;
+
     public Elev(String namn, String personnummer, String email,
                 String mobilnummer, String klass, String program) {
         this.namn = namn;
